@@ -1,0 +1,42 @@
+/*
+|=> Write Once, Use for any data type
+|=> Like Macros, processed by compiler. But better then macros as type checking is performed.
+|=> Two Types:-
+| -> Function Templates: sort, linear_search, binary_search
+| -> Class Templates: stack, queue, deque
+|=> The main concept behind STL
+*/
+
+#include<iostream>
+
+using namespace std;
+
+template<typename T>
+T myMax(T x, T y)
+{
+    return x>y ? x : y;
+}
+int main(){
+    cout<<myMax<int>(7,4)<<endl;  // 7
+    cout<<myMax<char>('x','a')<<endl; //x
+    return 0;
+}
+
+// Two functions are created by the compiler one of int type and one of char type, mainly compiler is doing the code writing work for us
+
+/*
+Templates vs Macros
+
+Template:-
+      template<typename T>
+      T myMax1(T x, T y)
+      {
+         return x>y ? x:y;
+      }
+      
+ Macros:-
+      #myMax2(x,y) (((x)>(y))?(x):(y))
+      
+In macros it is done at preprocessing phase and typecheking is not done
+macros are more error prone and templates are easy to debug.
+*/
