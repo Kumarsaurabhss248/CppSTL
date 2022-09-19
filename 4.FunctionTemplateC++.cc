@@ -21,8 +21,9 @@ int main()
     return 0;
 }
 
-/* Limit should be a const value as both the functions are created at run time so, we have to tell the limit at the compile time only if we try to pass a variable
-with normal value like int x=100 and pass it as x then it gives an error, and if we use with const int x=100 then it's works fine */
+/* Limit should be a const value as both the functions are created at compile time so, we have to tell the limit before the compilation only and we are able 
+to do so only, if we try to pass a variable with normal value like int x=100 and pass it as x then it gives an error, and if we use with const int x=100 
+then it's works fine */
 
 #include<iostream>
 
