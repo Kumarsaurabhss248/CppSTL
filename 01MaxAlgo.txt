@@ -1,0 +1,144 @@
+1.First version
+
+template<class T> 
+const T& max(const T& a, const T& b)
+{
+    return (a < b) ? b : a;
+}
+
+2.Second version
+
+template<class T, class Compare> 
+const T& max(const T& a, const T& b, Compare comp)
+{
+    return (comp(a, b)) ? b : a;
+}
+
+3.Third version
+
+template< class T >
+T max( std::initializer_list<T> ilist)
+{
+    return *std::max_element(ilist.begin(), ilist.end());
+}
+
+4.Fourth version
+
+template< class T, class Compare >
+T max( std::initializer_list<T> ilist, Compare comp )
+{
+    return *std::max_element(ilist.begin(), ilist.end(), comp);
+}
+
+std::max is defined in the header file <algorithm> and is used to find out the largest of the number passed to it.
+It returns the first of them, if there are more than one.
+
+It can be used in following manners:
+
+It compares the two numbers passed in its arguments and returns the larger of the two, and if both are equal, then it returns the first one.
+It can also compare the two numbers using a binary function, which is pre-defined by the user, and then passed as argument in std::max().
+It is also useful if we want to find the largest element in a given list, and it returns the first one if there are more than one present in the list
+
+1. For comparing elements using “<“: 
+         Syntax:
+
+template  constexpr const T& max (const T& a, const T& b);
+
+Here, a and b are the numbers to be compared.
+Returns: Larger of the two values.
+
+E.G:
+// C++ program to demonstrate the use of std::max
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main()
+{
+	// Comparing ASCII values of a and b
+	cout << std::max('a','b') << "\n";
+
+	// Returns the first one if both the numbers
+	// are same
+	cout << std::max(7,7);
+
+return 0;
+}
+
+Time Complexity: O(1)
+Auxiliary Space: O(1)
+
+2.For comparing elements using a pre-defined function: 
+
+template
+constexpr const T& max (const T& a, const T& b, Compare comp);
+
+Here, a and b are the numbers to be compared.
+
+comp: Binary function that accepts two values of type T as arguments, 
+and returns a value convertible to bool.
+The value returned indicates whether the element passed as first argument is considered less than the second.
+
+The function shall not modify any of its arguments.
+This can either be a function pointer or a function object.
+
+Returns: Larger of the two values.
+
+E.G:
+// C++ program to demonstrate the use of std::max
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+// Defining the binary function
+bool comp(int a, int b)
+{
+return (a < b);
+}
+int main()
+{
+int a = 7;
+int b = 28;
+
+cout << std::max(a,b,comp) << "\n";
+
+// Returns the first one if both the numbers
+// are same
+cout << std::max(7,7,comp);
+
+return 0;
+}
+
+Time Complexity: O(1)
+Auxiliary Space: O(1)
+
+3.For finding the maximum element in a list: Syntax:
+template 
+constexpr T max (initializer_list il, Compare comp);
+
+Here, comp is optional and can be skipped.
+il: An initializer_list object.
+Returns: Largest of all the values.
+
+E.G:
+// C++ program to demonstrate the use of std::max
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+// Defining the binary function
+bool comp(int a, int b)
+{
+return (a < b);
+}
+int main()
+{
+
+// Finding the largest of all the numbers
+cout << std::max({1, 2, 3, 4, 5, 10, -1, 7},comp) << "\n";
+
+return 0;
+}
+
+Time Complexity: O(n)
+Auxiliary Space: O(1)
+
