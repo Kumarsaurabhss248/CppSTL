@@ -1,0 +1,44 @@
+// Vector is same as Arrays but it has Dynamic size
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// In vector we use #include<vector>
+// void printVec(vector<int> v) -> O(n)
+void printVec(vector<int> &v)
+{
+    cout<<"Size: "<<v.size()<<endl;
+    for(int i=0;i<v.size();++i)
+    {
+        //v.size()-> O(1)
+        cout<<v[i]<<" ";
+    }
+    cout<<endl;
+}
+// When we create array locally we can create upto 10^5 size otherwise Runtime Error and when we 
+// create globally we can declare an array of 10^7 size
+// Limitations are on continuous memory location
+int main(){
+ 
+    vector<int> v; // Vector is empty with 0 size
+    int n;
+    cin>>n;
+    
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        v.push_back(x); // O(1)
+    }
+    printVec(v);
+    
+    vector<int> v1(5); // Initalize all 5 elements as 0
+    vector<int> v2(10,3); // Initalize all 10 elements as 3
+    v1.push_back(7);
+    printVec(v1); // 0 0 0 0 0 7
+    v1.pop_back(); // Remove the last element -> O(1)
+    vector<int> v3 = v1; //Copy whole vector v1 in v3 (Not possible in arrays) -> O(n)
+//  vector<int> &v3 =v2; // reference to the vector
+    v3.push_back(6); // 0 0 0 0 0 7 6 It will make a sepaerate copy
+    printVec(v1); // 0 0 0 0 0 7
+    
+}
