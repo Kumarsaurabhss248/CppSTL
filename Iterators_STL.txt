@@ -1,0 +1,80 @@
+// Iterators
+// .begin() points to the starting of a vector and .end() points after the last element of a vector
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    vector<int> v={2,3,4,5,6};
+    
+    vector<int> ::iterator it=v.begin();
+    cout<<(*it)<<endl; // 2
+    cout<<(*(it+1))<<endl; // 3
+    
+    for(it=v.begin();it!=v.end();++it)
+    {
+        cout<<(*it)<<" ";
+    }
+    // it++ -> Next iterator
+    // it+1 -> Next Loaction
+    // In vector when memory are continuous it will behave as same thing but in Set and Map where
+    // memory is not continuous it will behave as different it+1 goes to next memory location and 
+    // it++ goes to next iterator
+    
+    vector<pair<int,int>> v_p={{1,2},{2,3},{3,4}};
+    
+    vector<pair<int,int>> ::iterator it;
+    
+    for(it=v_p.begin();it!=v_p.end();it++)
+    {
+        cout<<(*it).first<<" "<<(*it).second; // it->first || it->second
+    }
+    
+}
+
+// How to write Iterators code in short in STL
+// Range Based Loops
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    std::vector<int> v = {2,3,4,6,7};
+    
+    for(int &value: v) //if we pass this as without reference it will simply run not update the values of v
+    {
+        value++;
+    }
+    for(int value: v){
+        cout<<value<<" ";
+    }
+    cout<<endl;
+    
+    vector<pair<int,int>> v_p ={{1,2},{2,3}};
+    
+    for(pair<int,int> &value: v_p){
+        cout<<v_p.first<<" "<<v_p.second<<endl;
+    }
+}
+
+//Auto 
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+  std::vector<int> v = {2,3,4,6,7};
+
+  vector<int> ::iterator it=v.begin();
+  auto it = v.begin();
+
+  vector<pair<int,int>> v_p ={{1,2},{2,3}};
+    
+  for(auto &value: v_p){
+    cout<<v_p.first<<" "<<v_p.second<<endl;
+  }
+  
+}
